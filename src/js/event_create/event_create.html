@@ -1,0 +1,66 @@
+<md-toolbar flex layout="row" class="bottom">
+  <md-button aria-label="Create Event" flex ng-click="eventCreate.swipe('eventCreate')" class="selected">
+    <span class="fa fa-paper-plane fa-2x orange"></span>
+  </md-button>
+  <md-button aria-label="Notifications" flex ng-click="eventCreate.swipe('home')">
+    <span class="fa fa-calendar fa-2x orange"></span>
+  </md-button> 
+  <md-button aria-label="Groups" flex ng-click="eventCreate.swipe('group')">
+    <span class="fa fa-users fa-2x orange"></span>
+  </md-button>  
+</md-toolbar>
+
+<md-toolbar flex="initial" class="header">
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Pollicione - Create event</h2>
+  </div>
+</md-toolbar>
+
+<div md-swipe-left="eventCreate.swipe('home')" class="content" flex>
+  <md-card class="bigCard" layout-padding layout-margin>
+    <form name="eventCreateForm" ng-submit="eventCreate.create(event)">
+    <md-input-container>
+      
+      <input type="text" ng-model="event.title" ng-required="true" placeholder="Title">
+    </md-input-container>
+    <md-input-container>
+      
+      <input type="textarea" ng-model="event.description" ng-required="true" placeholder="Description">
+    </md-input-container>
+    <md-input-container>
+      
+      <md-select ng-model="event.groupId">
+        <md-option ng-repeat="userGroup in eventCreate.userGroups" value="{{userGroup.id}}">
+          {{userGroup.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+    
+      <input type="number" min="2" ng-model="event.min_partecipants" ng-required="true" placeholder="Minimun partecipants">
+    </md-input-container>
+    <!--
+    <md-input-container>
+      Date
+      <md-datepicker ng-model="event.date" md-placeholder="Enter date"></md-datepicker>
+    </md-input-container>
+    <md-input-container>
+      Date limit until reply
+      <md-datepicker ng-model="event.expire_date" md-placeholder="Enter date"></md-datepicker>
+    </md-input-container>
+    -->
+    <md-input-container>
+    
+      <input class="md-input" mdc-datetime-picker="" date="true" time="true" id="datetime" min-date="date" ng-model="event.date" type="text" placeholder="Date">
+      <!--<input type="text" ng-model="event.date" ng-required="true" md-placeholder="YYYY-mm-dd hh:ii:00">-->
+    </md-input-container>
+    <md-input-container>
+    
+      <input class="md-input" mdc-datetime-picker="" date="true" time="true" id="datetime" min-date="date" ng-model="event.expire_date" type="text" placeholder="Date limit untile reply">
+    </md-input-container>
+    <div layout="column" layout-align="end" class="detailContainer">
+      <md-button type="submit" class="md-raised md-primary">Create this event!!</md-button>
+    </div>
+    </form>
+  </md-card>
+</div>

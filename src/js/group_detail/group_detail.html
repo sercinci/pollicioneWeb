@@ -1,0 +1,36 @@
+<md-toolbar flex layout="row" class="bottom">
+  <md-button aria-label="Create Event" flex ng-click="groupDetail.swipe('eventCreate')">
+    <span class="fa fa-paper-plane fa-2x orange"></span>
+  </md-button>
+  <md-button aria-label="Notifications" flex ng-click="groupDetail.swipe('home')">
+    <span class="fa fa-calendar fa-2x orange"></span>
+  </md-button> 
+  <md-button aria-label="Groups" flex ng-click="groupDetail.swipe('group')">
+    <span class="fa fa-users fa-2x orange"></span>
+  </md-button>  
+</md-toolbar>
+
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h1 class="md-flex">Pollicione - {{ groupDetail.group.name }}</h1>
+  </div>
+</md-toolbar>
+
+<md-card class"bigCard" layout-padding layout-margin>
+  <span ng-if="!groupDetail.isOwner && !groupDetail.show" ng-click="groupDetail.leave(-1)" class="fa fa-times"></span>
+  <h5>Descrizione:</h5>
+  <span>{{ groupDetail.group.description }}</span>
+  <h5>Membri: {{ groupDetail.group.members.length }}</h5>
+  <ul>
+    <li ng-repeat="member in groupDetail.group.members"><span ng-if="groupDetail.isOwner && member.username != groupDetail.group.owner" ng-click="groupDetail.remove(member.id)" class="fa fa-times red"></span><span ng-if="member.username === groupDetail.group.owner"class="fa fa-hand-o-right gold"></span><span> {{ member.username }}</span>
+    </li>
+    <li ng-if="groupDetail.isOwner">
+      <form name="groupAddMemberForm" ng-submit="groupDetail.add(members)">
+          <input type="text" ng-model="members" ng-required="false">
+          <md-button type="submit" class="md-raised md-primary"><span class="fa fa-plus"></span></md-button>
+      </form>
+    </li>
+  </ul>
+  <md-button ng-if="groupDetail.show" class="md-raised md-primary" ng-click="groupDetail.reply('accept')"><span class="fa fa-thumbs-up"></span> Accetta invito</md-button>
+  <md-button ng-if="groupDetail.show" class="md-raised md-primary" ng-click="groupDetail.reply('decline')"><span class="fa fa-thumbs-down"></span> Rifiuta invito</md-button>
+</md-card>

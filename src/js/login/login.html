@@ -1,0 +1,22 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Pollicione <span class="fa fa-thumbs-up"></span></h2>
+  </div>
+</md-toolbar>
+
+<md-card layout-padding layout-margin>
+  <form name="loginForm" ng-submit="login.signIn(user)">
+  <md-input-container>
+    
+    <input type="text" ng-model="user.username" ng-required="true" placeholder="Username">
+  </md-input-container>
+  <md-input-container>
+    
+    <input type="password" ng-model="user.password" ng-required="true" placeholder="Password">
+  </md-input-container>
+  <div layout="column" layout-align="end">
+    <md-button type="submit" class="md-raised md-primary">Login</md-button>
+    <md-button ng-click="login.go('signup')" class="md-raised md-primary">Sign Up Fast!</md-button>
+  </div>
+  </form>
+</md-card>

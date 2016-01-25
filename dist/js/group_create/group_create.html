@@ -1,0 +1,36 @@
+<md-toolbar flex layout="row" class="bottom">
+  <md-button aria-label="Create Event" flex ng-click="groupCreate.swipe('eventCreate')">
+    <span class="fa fa-paper-plane fa-2x orange"></span>
+  </md-button>
+  <md-button aria-label="Notifications" flex ng-click="groupCreate.swipe('home')">
+    <span class="fa fa-calendar fa-2x orange"></span>
+  </md-button> 
+  <md-button aria-label="Groups" flex ng-click="groupCreate.swipe('group')">
+    <span class="fa fa-users fa-2x orange"></span>
+  </md-button>  
+</md-toolbar>
+
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Pollicione - Group create</h2>
+  </div>
+</md-toolbar>
+
+<md-card layout-padding layout-margin>
+  <form name="groupCreateForm" ng-submit="groupCreate.create(group)">
+  <md-input-container>
+    
+    <input type="text" ng-model="group.name" ng-required="true" placeholder="Name">
+  </md-input-container>
+  <md-input-container>
+    
+    <input type="textarea" ng-model="group.description" ng-required="true" placeholder="Description">
+  </md-input-container>
+  <md-input-container>
+    <input type="text" ng-model="group.members" ng-required="false" placeholder="Invite separated with comma">
+  </md-input-container>
+  <div layout="column" layout-align="end">
+    <md-button type="submit" class="md-raised md-primary">Create this group!!</md-button>
+  </div>
+  </form>
+</md-card>

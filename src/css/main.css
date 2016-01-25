@@ -1,0 +1,87 @@
+ul {
+	list-style: none;
+}
+
+.bottom {
+	position: fixed;
+	z-index: 100;
+	bottom: 0px;
+}
+
+.header {
+	position: fixed;
+	z-index: 100;
+	float: left; 
+	width: 100%;
+}
+
+.content {
+	margin-top: 48px;
+}
+
+md-card {
+	margin-top: 15px;
+}
+
+.bigCard {
+	margin-bottom: 96px;
+}
+
+.selected {
+	background-color: rgba(255, 223, 61, 0.2);
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: #292929 !important;
+    color: white;
+}
+
+.orange {
+	margin-top: 5px;
+	color: orange;
+}
+
+.detailContainer {
+	padding-bottom: 72px;
+	margin-top: 5px;
+}
+
+.pending {
+	border-left: 5px solid yellow;
+}
+
+.positive {
+	border-left: 5px solid green;
+}
+
+.groupList {
+	border-bottom: 5px solid #292929;
+}
+
+.eventCardDateText {
+	font-size: 14px;
+	text-align: right;
+}
+
+.eventCardexpireDateText {
+	font-size: 10px;
+	text-align: right;
+	color: gray;
+}
+
+h3, h5 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.red {
+	color: red;
+}
+
+.gold {
+	color: gold;
+}
+
+.green {
+	color: green;
+}

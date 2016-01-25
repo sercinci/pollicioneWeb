@@ -1,0 +1,30 @@
+<md-toolbar flex layout="row" class="bottom">
+	<md-button aria-label="Create Event" flex ng-click="group.swipe('eventCreate')">
+		<span class="fa fa-paper-plane fa-2x orange"></span>
+	</md-button>
+	<md-button aria-label="Notifications" flex ng-click="group.swipe('home')">
+		<span class="fa fa-calendar fa-2x orange"></span>
+	</md-button> 
+	<md-button aria-label="Groups" flex ng-click="group.swipe('group')" class="selected">
+		<span class="fa fa-users fa-2x orange"></span>
+	</md-button>  
+</md-toolbar>
+
+<md-toolbar flex="initial" class="header">
+	<div class="md-toolbar-tools">
+		<h1 class="md-flex">Pollicione - Groups</h1>
+	</div>
+</md-toolbar>
+
+<div md-swipe-right="group.swipe('home')" class="content" flex>
+	<md-card ng-repeat="pendingGroup in group.pendingGroups" ng-click="group.go('groupDetail', pendingGroup.id)" layout-padding class="groupList">
+		<h3>{{ pendingGroup.name }}</h3>
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</md-card>
+	<md-card ng-repeat="grup in group.groups" ng-click="group.go('groupDetail', grup.id)" layout-padding class="groupList">
+		<h3>{{ grup.name }}</h3>
+	</md-card>
+	<div layout="column" layout-align="end" class="detailContainer">
+    	<md-button class="md-raised md-primary" ng-click="group.swipe('groupCreate')">Create new group!!</md-button>
+  	</div>
+</div>

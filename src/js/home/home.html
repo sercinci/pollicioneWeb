@@ -1,0 +1,32 @@
+<md-toolbar flex layout="row" class="bottom">
+	<md-button aria-label="Create Event" flex ng-click="home.swipe('eventCreate')">
+		<span class="fa fa-paper-plane fa-2x orange"></span>
+	</md-button>
+	<md-button aria-label="Notifications" flex ng-click="home.swipe('home')" class="selected">
+		<span class="fa fa-calendar fa-2x orange"></span>
+	</md-button> 
+	<md-button aria-label="Groups" flex ng-click="home.swipe('group')">
+		<span class="fa fa-users fa-2x orange"></span>
+	</md-button>  
+</md-toolbar>
+
+<md-toolbar flex="initial" class="header">
+	<div class="md-toolbar-tools">
+		<h2 class="md-flex">Pollicione - Events</h2>
+	</div>
+</md-toolbar>
+	
+<div md-swipe-left="home.swipe('group')" md-swipe-right="home.swipe('eventCreate')" class="content" flex>
+	<md-card ng-repeat="pendingEvent in home.pendingEvents" ng-click="home.go('eventDetail', pendingEvent.id)" layout-padding class="pending">
+		<span class="eventCardDateText">{{pendingEvent.date | date:'dd-MM-yyyy HH:mm'}}</span>
+		<h3>{{ pendingEvent.title }}</h3>
+		<span class="eventCardexpireDateText">{{pendingEvent.expire_date | date:'dd-MM-yyyy HH:mm'}}</span>
+		<md-progress-linear md-mode="indeterminate" ng-if="pendingEvent.status == null"></md-progress-linear>
+	</md-card>
+	<md-card ng-repeat="positiveEvent in home.positiveEvents" ng-click="home.go('eventDetail', positiveEvent.id)" layout-padding class="positive">
+		<span class="eventCardDateText">{{positiveEvent.date | date:'dd-MM-yyyy HH:mm'}}</span>
+		<h3>{{ positiveEvent.title }}</h3>
+		<md-progress-linear md-mode="indeterminate" ng-if="positiveEvent.status == null"></md-progress-linear>
+	</md-card>
+</div>
+
